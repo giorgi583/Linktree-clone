@@ -9,9 +9,9 @@
   --font-sans: var(--font-sans);
 
   /* brand/theme colors - customize these */
-  --color-brand-50: oklch(0.97 0.02 250);
-  --color-brand-500: oklch(0.6 0.18 250);
-  --color-brand-900: oklch(0.3 0.15 250);
+    --color-brand: var(--brand);
+   --color-brand-secondary: var(--brand-secondary);
+   --color-brand-tertiary: var(--brand-tertiary);
 
   /* radius tokens if you're using shadcn/ui */
   --radius-lg: 0.75rem;
@@ -55,6 +55,9 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 :root {
+  --brand: oklch(39.241% 0.18733 321.059);
+  --brand-secondary: oklch(38.001% 0.08824 158.447);
+  --brand-tertiary: oklch(84.848% 0.18072 105.856);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --border: oklch(0.922 0 0);
@@ -89,6 +92,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 .dark {
+  --brand: oklch(57.642% 0.27537 320.928);
+  --brand-secondary: oklch(67.72% 0.16288 156.465);
+  --brand-tertiary: oklch(84.848% 0.18072 105.856);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -129,7 +135,7 @@ input {
   border-radius: 5px;
 }
 input:focus {
-  border: 2px solid blue;
+  border: 2px solid rgb(0, 0, 255);
 }
 .glow-box::before {
   content: "";

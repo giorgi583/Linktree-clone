@@ -1,7 +1,9 @@
 "use client"
 import * as React from "react"
 import  Link  from "next/link"
+import {useSession} from 'next-auth/react'
 const Hero = () => {
+    const {data: session} = useSession()
     const [mobileOpen, setMobileOpen] = React.useState(false)
    const [renderedText, setRenderedText] = React.useState('')
    React.useEffect(() => {
@@ -56,9 +58,15 @@ const Hero = () => {
                         </svg>
                     </button>
                     <div className="hidden md:block p-px rounded-full">
-                        <Link href="/register" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
-                            Get started for free
-                        </Link>
+                       {session ? (
+                            <Link href="/dashboard" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                                Go to Dashboard
+                            </Link>
+                        ) : (
+                            <Link href="/register" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                                Get started for free
+                            </Link>
+                        )}
                     </div>
                 </nav>
 
@@ -74,9 +82,15 @@ const Hero = () => {
                 </p>
 
                 <div className="flex items-center gap-2 mt-8 text-sm">
-                    <Link href="/register" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
-                            Get started for free
-                        </Link>
+                   {session ? (
+                            <Link href="/dashboard" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                                Go to Dashboard
+                            </Link>
+                        ) : (
+                            <Link href="/register" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                                Get started for free
+                            </Link>
+                        )}
 
                     <div className='p-[0.5px] rounded-full bg-linear-to-r from-white to-white/60'>
                         <button className="text-cyan-800 hover:bg-cyan-100 text-sm px-5 py-3 rounded-full transition cursor-pointer">

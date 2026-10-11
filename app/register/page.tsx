@@ -1,9 +1,10 @@
 import RegisterForm from '@/components/RegisterForm'
+import { ArrowBigLeft, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
 const page = () => {
   return (
-    <div className='h-screen bg-yellow-200'>
+    <div className='min-h-screen'>
          <Link href={'/'} className='flex items-center gap-2 m-5 mx-5'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 35" width="50" height="50" aria-hidden="true">
               <defs>
@@ -23,7 +24,13 @@ const page = () => {
             Link<span className="text-fuchsia-900">tree</span></h1>
         </Link>
         <div className="flex flex-col gap-4 max-w-100 border-2 border-fuchsia-800 bg-gray-50 rounded-xl p-5 mx-auto my-auto">
-            <h1 className="text-3xl font-semibold text-teal-800">Sign up</h1>
+            <div className="flex items-center gap-2">
+              <Link href={'/'}  className='flex items-center gap-2'>
+                <ArrowLeft size={20} className='text-teal-800'/>
+                <span className='text-teal-800'>Back</span>
+              </Link>
+              <h1 className="text-3xl font-semibold text-teal-800 ml-8">Sign up</h1>
+            </div>
             <RegisterForm />
         </div>
         <div className='absolute bottom-5 right-5 w-20 h-20'>
