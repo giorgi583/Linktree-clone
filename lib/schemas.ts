@@ -38,18 +38,18 @@ export const profileSchema = z.object({
       textColor: hexColor,
     })
     .optional(),
-  avatarUrl: z.string().url().optional(),
+  avatarUrl: z.url().optional(),
 })
-
+const socials = ["instagram", "twitter", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch"]
 export const linkSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("LINK"),
-    title: z.string().min(1).max(50),
-    url: z.string().url(),
+    title: z.string().min(1).max(50).refine((val) => !socials.includes(val), "Add socials above"),
+    url: z.url(),
   }),
   z.object({
     type: z.literal("SOCIAL"),
-    platform: z.enum(["instagram", "twitter", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch"]),
-    url: z.string().url(),
+    platform: z.enum(socials),
+    url: z.url(),
   }),
 ])

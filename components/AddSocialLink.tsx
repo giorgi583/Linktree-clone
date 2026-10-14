@@ -2,6 +2,7 @@ import React from 'react'
 import { createLink } from '@/app/actions/links'
 import {useActionState, useEffect} from 'react'
 import Loader from './ui/Loader'
+import toast from 'react-hot-toast'
 const AddSocialLink = ({chosenSocial}: {chosenSocial: string | null}) => {
     const [username, setUsername] = React.useState<string>('')
     const [actionState, formAction, ispending] = useActionState(createLink, null)
@@ -10,9 +11,13 @@ const AddSocialLink = ({chosenSocial}: {chosenSocial: string | null}) => {
         if (actionState?.success) {
             setUsername('')
             window.location.reload()
+            toast.success('Link added successfully')
+            console.log('actionState', actionState)
         }
         if (actionState?.error) {
             console.log('error', actionState.error)
+            toast.error(actionState.error)
+            console.log('actionState', actionState)
         }
     }, [actionState])
   return (
