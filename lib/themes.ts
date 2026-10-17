@@ -7,7 +7,7 @@ export type ThemeStyle = {
 }
 
 export const PRESET_THEMES: Record<string, ThemeStyle> = {
-  default: { label: "Default", background: "#FFFDD0", buttonColor: "#134e4a", buttonText: "#ffffff", textColor: "#18181b" },
+  default: { label: "Default", background: "#fbfeab", buttonColor: "#134e4a", buttonText: "#69fda2", textColor: "#0d4825" },
   night:   { label: "Night",   background: "#0f172a", buttonColor: "#1e293b", buttonText: "#fB5563", textColor: "#f1f5f9" },
   ocean:   { label: "Ocean",   background: "#0c4a6e", buttonColor: "#0284c7", buttonText: "#FDF6E3", textColor: "#ffffff" },
   pastel:  { label: "Pastel",  background: "#fdf2f8", buttonColor: "#f9a8d4", buttonText: "#DB2777", textColor: "#831843" },

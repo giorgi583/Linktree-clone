@@ -29,8 +29,10 @@ const page = async ({params}: {params: Promise<{username: string}>}) => {
    })
    console.log(username, user, links, socials)
   return (
-    <div>
-        <PublicPage user={user} links={links} socials={socials}/>
+    <div className="min-h-screen flex justify-center">
+        <div className='min-w-100 max-w-120 mt-10'>
+            <PublicPage user={user} links={links} socials={socials}/>
+        </div>
     </div>
   )
 }

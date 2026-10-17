@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react'
-import {socialIcons} from './EditLinkPage'
+import {socialIcons} from './SocialIcons'
 import React from 'react'
 
 const SocialsList = ({setStep, socials, setChosenSocial}: {setStep: (step: string) => void, socials: any[], setChosenSocial: (social: string | null) => void}) => {

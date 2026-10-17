@@ -1,6 +1,6 @@
 "use client"
 import { GripVertical, PencilIcon, Plus, XIcon } from 'lucide-react'
-import { socialIcons } from './EditLinkPage'
+import { socialIcons } from './SocialIcons'
 import React, { Dispatch } from 'react'
 import { SetStateAction } from 'react'
 import SocialsList from './SocialsList'
