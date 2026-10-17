@@ -3,6 +3,8 @@ import { prisma } from "@/lib/db"
 import { auth } from "@/auth"
 import { linkSchema } from '../../lib/schemas'
 import { revalidatePath } from "next/cache"
+import * as cheerio from "cheerio"
+import { LetterText } from "lucide-react"
 export async function createLink(prevState: any, formData: FormData) {
   const session = await auth()
   if (!session?.user?.id) return { error: "Not signed in" }
@@ -13,6 +15,21 @@ export async function createLink(prevState: any, formData: FormData) {
    platform: formData.get("platform") ?? undefined,
   })
   if (!parsed.success) return { error: parsed.error.issues[0].message }
+  if(parsed.data.type === 'LINK' && !parsed.data.title) {
+    const url = parsed.data.url
+    const response = await fetch(url, {
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+  },
+});
+    const html = await response.text()
+    const $ = cheerio.load(html)
+    let title = $("title").text() || url;
+    if(title === 'Just a moment...') {
+      title = url
+    }
+    parsed.data.title = title
+  }
   const lastLink = await prisma.link.findFirst({
     where: { userId: session.user.id, type: parsed.data.type },
     orderBy: { order: "desc" },

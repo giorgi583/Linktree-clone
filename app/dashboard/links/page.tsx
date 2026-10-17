@@ -40,12 +40,12 @@ const page = async () => {
   })
   return (
     <div>
-     <Link href="/dashboard" className="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-200 my-10">
+     <Link href="/dashboard" className="text-sm text-brand-secondary transition-colors duration-200 my-10 rounded-full p-2 hover:bg-brand-secondary/10">
         &larr; Back to Dashboard
       </Link>
       <div className="grid grid-cols-2 mt-20">
         <EditLinkPage user={user} links={links} socials={socials}/>
-       <PublicPagePreview />  
+       <PublicPagePreview user={user} links={links} socials={socials}/>  
       </div>
     </div>
   )

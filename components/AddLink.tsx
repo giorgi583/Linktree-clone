@@ -22,9 +22,9 @@ const AddLink = ({setAddLink}: any) => {
             <h2 className='text-lg font-semibold mb-4 self-center'>Add Link</h2>
             <button onClick={() => setAddLink(false)} className='absolute top-3 right-3 text-gray-500 hover:text-gray-700'><XIcon className='w-5 h-5' /></button>
             <form action={formAction}> 
-                <input type="text" hidden name="type" value="LINK" />
+                <input type="text" hidden name="type" value="LINK" readOnly />
                 <div className='mb-4'>
-                    <label htmlFor="linkTitle" className='block text-sm font-medium text-gray-700'>Link Title</label>
+                    <label htmlFor="linkTitle" className='block text-sm font-medium text-gray-700'>Link Title (optional)</label>
                     <input type="text" id="linkTitle" name="title" className='mt-1 p-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' />
                 </div>
                 <div className='mb-4'>

@@ -1,7 +1,7 @@
 import { XIcon } from 'lucide-react'
 import {useActionState, useEffect} from 'react'
 import {updateLink} from '@/app/actions/links'
-import { socialIcons } from './EditLinkPage';
+import { socialIcons } from './SocialIcons';
 import Loader from './ui/Loader';
 import toast from 'react-hot-toast';
 const EditSocial = ({ editLink, setEditLink, socials, links }: { editLink: string; setEditLink: (link: string | null) => void; socials: any[]; links: any[] }) => {

@@ -1,6 +1,5 @@
 "use client"
-import { GripVertical, PencilIcon, Plus, XIcon } from 'lucide-react'
-import { socialIcons } from './SocialIcons'
+import { Plus, XIcon } from 'lucide-react'
 import React, { Dispatch } from 'react'
 import { SetStateAction } from 'react'
 import SocialsList from './SocialsList'
@@ -18,7 +17,7 @@ const SocialsWindow = ({socials, setShowSocials, setEditLink}: {socials: any[], 
             <h3 className='font-semibold'>Show visitors where to find you</h3>
             <p className='text-sm text-gray-500'>Add your social profiles, email and more as linked icons on your Linktree.</p>
             <button className='absolute top-3 right-3 text-gray-500 hover:text-gray-700' onClick={() => setShowSocials(false)}><XIcon className='w-5 h-5' /></button>
-            <div className='flex flex-col gap-4 min-h-60 p-2 max-h-80 rounded-lg overflow-y-scroll'>
+            <div className='flex flex-col gap-4 min-h-60 p-2 max-h-80 rounded-lg overflow-y-scroll custom-scrollbar'>
                        <LinkList initialLinks={socials} setEditLink={setEditLink} type="SOCIAL" />
             </div>
             <button onClick={() => setStep('addsocials')} className='p-2 px-4 bg-fuchsia-700 self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-5 h-5' />Add Social Icon</button>

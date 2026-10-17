@@ -8,12 +8,12 @@ export type ThemeStyle = {
 
 export const PRESET_THEMES: Record<string, ThemeStyle> = {
   default: { label: "Default", background: "#fbfeab", buttonColor: "#134e4a", buttonText: "#69fda2", textColor: "#0d4825" },
-  night:   { label: "Night",   background: "#0f172a", buttonColor: "#1e293b", buttonText: "#fB5563", textColor: "#f1f5f9" },
-  ocean:   { label: "Ocean",   background: "#0c4a6e", buttonColor: "#0284c7", buttonText: "#FDF6E3", textColor: "#ffffff" },
+  night:   { label: "Night",   background: "#0f172a", buttonColor: "#1e293b", buttonText: "#f44141", textColor: "#fed5d5" },
+  ocean:   { label: "Ocean",   background: "#0c4a6e", buttonColor: "#0284c7", buttonText: "#FDF6E3", textColor: "#e3f3ff" },
   pastel:  { label: "Pastel",  background: "#fdf2f8", buttonColor: "#f9a8d4", buttonText: "#DB2777", textColor: "#831843" },
-  forest:  { label: "Forest",  background: "#14532d", buttonColor: "#166534", buttonText: "#86EFAC", textColor: "#f0fdf4" },
-  sunset:  { label: "Sunset",  background: "#7c2d12", buttonColor: "#ea580c", buttonText: "#ffffff", textColor: "#fff7ed" },
-  mono:    { label: "Mono",    background: "#fafaf9", buttonColor: "#0c0a09", buttonText: "#ffffff", textColor: "#0c0a09" },
+  forest:  { label: "Forest",  background: "#002f17", buttonColor: "#4c2e05", buttonText: "#86EFAC", textColor: "#f0fdf4" },
+  sunset:  { label: "Sunset",  background: "#784BA0", buttonColor: "#FF6B6B", buttonText: "#FFF1A8", textColor: "#FF9F68" },
+  mono:    { label: "Mono",    background: "#fafaf9", buttonColor: "#0c0a09", buttonText: "#b6b6b6", textColor: "#0c0a09" },
   bee: { label: "Bee", background: "#facc15", buttonColor: "#fef3c7", buttonText: "#A16207", textColor: "#0c0a09" },
 }
 

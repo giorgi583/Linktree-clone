@@ -1,9 +1,8 @@
 "use client"
-import { ExternalLink, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import Image from 'next/image'
 import { deleteAllLinks } from '@/app/actions/links'
 import React from 'react';
-import {FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaYoutube, FaTiktok, FaTwitch, FaSnapchat, FaReddit, FaPinterest, FaDiscord} from 'react-icons/fa'
 import SocialsWindow from './SocialsWindow';
 import EditSocial from './EditSocial';
 import AddLink from './AddLink';
@@ -42,7 +41,7 @@ const EditLinkPage = ({user, links, socials}: any) => {
           <button className='p-2 bg-slate-50 rounded text-sm border-b-2 border-slate-300'>Links</button>
        <button onClick={() => setAddLink(true)} className='p-2 bg-fuchsia-700 text-white rounded hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-4 h-4'/> Add Link</button>
         </div>
-        <div className='min-h-60 max-h-60 overflow-y-scroll'>
+        <div className='min-h-60 max-h-70 overflow-y-scroll custom-scrollbar'>
          {links.length > 0 ? <LinkList initialLinks={links} setEditLink={setEditLink} type="LINK" /> : <p className="text-sm text-gray-500">No links added yet</p>}
 
         </div>

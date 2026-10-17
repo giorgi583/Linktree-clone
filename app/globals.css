@@ -56,7 +56,7 @@
 }
 :root {
   --brand: oklch(39.241% 0.18733 321.059);
-  --brand-secondary: oklch(38.001% 0.08824 158.447);
+  --brand-secondary: oklch(48.103% 0.08213 194.807);
   --brand-tertiary: oklch(84.848% 0.18072 105.856);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -162,11 +162,23 @@ input:focus {
   border-radius: inherit;
   z-index: 1;
 }
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--brand-secondary);
+  border-radius: 9999px;  
+  color: #f44141;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
 .glow-box > * {
   position: relative;
   z-index: 2;
-  color: #0d4825;
 }
 body {
   font-family: "Poppins", sans-serif;

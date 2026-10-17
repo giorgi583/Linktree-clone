@@ -44,7 +44,7 @@ const socials = ["instagram", "twitter", "github", "linkedin", "youtube", "tikto
 export const linkSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("LINK"),
-    title: z.string().min(1).max(50).refine((val) => !socials.includes(val), "Add socials above"),
+    title: z.string().max(50).refine((val) => !socials.includes(val), "Add socials above").optional(),
     url: z.url(),
   }),
   z.object({

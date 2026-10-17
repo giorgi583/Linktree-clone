@@ -1,6 +1,6 @@
 import PublicPage from "@/components/PublicPage";
 import {prisma} from "@/lib/db"
-
+import { PRESET_THEMES } from "@/lib/themes";
 const page = async ({params}: {params: Promise<{username: string}>}) => {
   const {username} = await params;
    const user = await prisma.user.findUnique({
@@ -28,8 +28,9 @@ const page = async ({params}: {params: Promise<{username: string}>}) => {
     }
    })
    console.log(username, user, links, socials)
+  const theme = user?.theme && PRESET_THEMES[user.theme] ? PRESET_THEMES[user.theme] : PRESET_THEMES.default;
   return (
-    <div className="min-h-screen flex justify-center">
+    <div className="min-h-screen flex justify-center" style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}}>
         <div className='min-w-100 max-w-120 mt-10'>
             <PublicPage user={user} links={links} socials={socials}/>
         </div>

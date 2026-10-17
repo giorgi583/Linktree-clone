@@ -14,16 +14,16 @@ import {
 } from "react-icons/fa";
 
 export const socialIcons: Record<string, React.JSX.Element> = {
-  instagram: <FaInstagram className="w-5 h-5" />,
-  twitter: <FaTwitter className="w-5 h-5" />,
-  github: <FaGithub className="w-5 h-5" />,
-  facebook: <FaFacebook className="w-5 h-5" />,
-  linkedin: <FaLinkedin className="w-5 h-5" />,
-  youtube: <FaYoutube className="w-5 h-5" />,
-  tiktok: <FaTiktok className="w-5 h-5" />,
-  twitch: <FaTwitch className="w-5 h-5" />,
-  snapchat: <FaSnapchat className="w-5 h-5" />,
-  reddit: <FaReddit className="w-5 h-5" />,
-  pinterest: <FaPinterest className="w-5 h-5" />,
-  discord: <FaDiscord className="w-5 h-5" />,
+  instagram: <FaInstagram className="w-6 h-6" />,
+  twitter: <FaTwitter className="w-6 h-6" />,
+  github: <FaGithub className="w-6 h-6" />,
+  facebook: <FaFacebook className="w-6 h-6" />,
+  linkedin: <FaLinkedin className="w-6 h-6" />,
+  youtube: <FaYoutube className="w-6 h-6" />,
+  tiktok: <FaTiktok className="w-6 h-6" />,
+  twitch: <FaTwitch className="w-6 h-6" />,
+  snapchat: <FaSnapchat className="w-6 h-6" />,
+  reddit: <FaReddit className="w-6 h-6" />,
+  pinterest: <FaPinterest className="w-6 h-6" />,
+  discord: <FaDiscord className="w-6 h-6" />,
 };
