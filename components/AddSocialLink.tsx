@@ -27,7 +27,7 @@ const AddSocialLink = ({chosenSocial}: {chosenSocial: string | null}) => {
             <form action={formAction} className='flex flex-col gap-4'>
                 <input type='hidden' id='type' name='type' value='SOCIAL' />
                 <input type='hidden' id='platform' name='platform' value={chosenSocial || ''} />
-                <input type='hidden' id='url' name='url' value={chosenSocial === 'twitter' ? `https://x.com/${username}` : chosenSocial === 'twitch' ? `https://twitch.tv/${username}` : `https://www.${chosenSocial}.com/${username}`} />
+                <input type='hidden' id='url' name='url' value={chosenSocial === 'twitch' ? `https://twitch.tv/${username}` : chosenSocial === 'telegram' ? `https://t.me/${username}` : `https://www.${chosenSocial}.com/${username}`} />
                 <div className='flex flex-col gap-2'>
                     <label htmlFor='url' className='text-sm font-semibold'>username</label>
                     <input required type='text' id='username' name='username' value={username} onChange={(e) => setUsername(e.target.value)} placeholder={`Enter your ${chosenSocial} username`} className='w-full p-2 border border-gray-300 rounded-lg'/>

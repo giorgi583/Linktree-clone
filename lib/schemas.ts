@@ -40,7 +40,7 @@ export const profileSchema = z.object({
     .optional(),
   avatarUrl: z.url().optional(),
 })
-const socials = ["instagram", "twitter", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch"]
+const socials = ["instagram", "x", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch", "telegram"]
 export const linkSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("LINK"),

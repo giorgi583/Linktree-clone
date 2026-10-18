@@ -1,6 +1,5 @@
 import {
   FaInstagram,
-  FaTwitter,
   FaGithub,
   FaFacebook,
   FaLinkedin,
@@ -11,11 +10,14 @@ import {
   FaReddit,
   FaPinterest,
   FaDiscord,
+  FaTelegram
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export const socialIcons: Record<string, React.JSX.Element> = {
+  telegram: <FaTelegram className="w-6 h-6" />,
   instagram: <FaInstagram className="w-6 h-6" />,
-  twitter: <FaTwitter className="w-6 h-6" />,
+  x: <FaXTwitter className="w-6 h-6" />,
   github: <FaGithub className="w-6 h-6" />,
   facebook: <FaFacebook className="w-6 h-6" />,
   linkedin: <FaLinkedin className="w-6 h-6" />,

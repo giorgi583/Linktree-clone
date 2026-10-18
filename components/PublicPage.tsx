@@ -73,7 +73,7 @@ const handleShare = (url: string) => {
     "--tw-ring-offset-color": theme.background
   } as React.CSSProperties}><Image width={100} height={100} src={user?.avatarUrl || "/user-icon.webp"} alt="User" className="w-full rounded-full h-full" /></div>
     <h2 className={`${isPreview ? 'text-xl' : 'text-2xl'} font-semibold`}>@{user?.username}</h2>
-    <div className="flex items-center gap-3 flex-wrap mb-5">{socials?.filter((social: any) => social.isActive).map((social: any) => <a className='hover:scale-105 transition-all duration-300' key={social.id} href={social.url} target="_blank" rel="noopener noreferrer">{socialIcons[social.platform]}</a>)}</div>
+    <div className={`flex items-center ${isPreview ? 'gap-2' : 'gap-4'} flex-wrap mb-5`}>{socials?.filter((social: any) => social.isActive).map((social: any) => <a className='hover:scale-105 transition-all duration-300' key={social.id} href={social.url} target="_blank" rel="noopener noreferrer">{socialIcons[social.platform]}</a>)}</div>
     </div>
     <div className="flex flex-col gap-4 w-full">
       {links?.filter((link: any) => link.isActive).map((link: any) => <a style={{color: theme.buttonText, background: theme.buttonColor, borderColor: theme.buttonText, borderWidth: "1px", borderStyle: "solid"}} className={`hover:-translate-y-1 hover:-translate-x-1 rounded transition-all duration-300 ${isPreview ? 'p-2 shadow-[3px_3px_0px]' : 'p-4 shadow-[4px_4px_0px]'}  text-center relative font-semibold`} key={link.id} href={link.url} target="_blank" rel="noopener noreferrer">{link.title} <button onClick={() => handleShare(link.url)} className={`absolute ${isPreview ? 'top-2 right-2' : ' top-4 right-2'} p-1 rounded-full hover:bg-gray-200/20`}><EllipsisVertical  size={isPreview ? 15 : 20}/></button></a>)}
@@ -82,10 +82,14 @@ const handleShare = (url: string) => {
     <div className="flex flex-col justify-center items-center gap-5">
       <Link href={'/dashboard'} style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}} className={`rounded-full px-3 py-2 text-white shadow-xl font-semibold ${isPreview ? 'text-sm my-2' : 'text-xl my-5'}`}>Get your own linktree</Link>
       <ul className='flex flex-wrap justify-center gap-3 text-xs font-semibold'>
-        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href="">Cookie Preferences •</a></li>
-        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>Privacy •</li>
-        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>Reports •</li>
-        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>About this account •</li>
+        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href="">Cookie Preferences</a></li>
+        <span>•</span>
+        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>Privacy</li>
+        <span>•</span>
+        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>Reports</li>
+        <span>•</span>
+        <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>About this account</li>
+        <span>•</span>
         <li className='hover:underline cursor-pointer'><a className='hover:underline cursor-pointer' href=""></a>More about Linktree</li>
       </ul>
     </div>

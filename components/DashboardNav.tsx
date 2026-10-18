@@ -3,12 +3,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Link2, BarChart3, UserRound, Settings } from "lucide-react"
+import { Link2, BarChart3, UserRound, Settings, LayoutDashboard, LogOut } from "lucide-react"
 import { signOut } from "next-auth/react"
 import userPic from '../public/user-icon.webp'
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Links", icon: Link2 },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard/links", label: "Links", icon: Link2 },
   { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/dashboard/profile", label: "Profile", icon: UserRound },
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
@@ -96,7 +97,7 @@ export function DashboardNav({
           ) : (
             <div><Image src={userPic} alt={name ?? username} className="h-6 w-6 rounded-full" /></div>
           )}
-          <span className="hidden truncate md:inline">{name ?? username}</span>
+          <span className="hidden truncate md:flex md:items-center md:gap-2 text-red-800">Log out <LogOut className="w-4 h-4" /></span>
         </button>
       </div>
     </aside>
@@ -110,7 +111,7 @@ export function DashboardNav({
                 href={href}
                 className={`flex items-center gap-3 rounded-md px-3 py-2 text-base transition-colors ${
                   isActive
-                    ? "bg-[#115e59]/10 text-brand-secondary font-medium"
+                    ? "bg-brand-secondary/10 text-brand-secondary font-medium"
                     : "text-stone-600 hover:bg-stone-100"
                 }`}
               >
