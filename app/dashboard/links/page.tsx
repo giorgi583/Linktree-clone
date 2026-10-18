@@ -15,7 +15,7 @@ const page = async () => {
     where: {
       id: session?.user?.id
     },
-    select: { username: true, avatarUrl: true, image: true, theme: true },
+    select: { username: true, avatarUrl: true, image: true, theme: true, customColors: true },
   })
   if (!user?.username) {
     redirect("/dashboard")

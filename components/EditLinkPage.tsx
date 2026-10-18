@@ -20,13 +20,13 @@ const EditLinkPage = ({user, links, socials}: any) => {
   }
   console.log(user, links, socials)
   return (
-    <div className='overflow-hidden'>
+    <div className='overflow-hidden relative'>
     <div className="flex items-center gap-5 mb-2 relative w-fit">
     <p className={`${editingObject === 'content' ? 'font-semibold' : ''} cursor-pointer`} onClick={()=> setEditingObject('content')}>content</p>
     <p className={`${editingObject !== 'content' ? 'font-semibold' : ''} cursor-pointer`} onClick={()=> setEditingObject('design')}>design</p>
    <div className="absolute -bottom-1 left-0 h-[3px] w-1/2 bg-brand transition-all duration-300 ease-in-out" style={{transform: editingObject === 'content' ? 'translateX(0)' : 'translateX(110%)',}}></div>
     </div>
-    <div className="flex flex-col gap-5 px-10 py-7 rounded-2xl shadow-md w-full bg-card transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(100%)' : 'translateY(0)', opacity: editingObject !== 'content' ? 0 : 1}}>
+    <div className="absolute flex flex-col gap-5 px-10 py-7 rounded-2xl shadow-md w-full bg-card transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(100%)' : 'translateY(0)', opacity: editingObject !== 'content' ? 0 : 1}}>
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Content</h1>
           <button onClick={handleDelete} className='bg-brand text-white px-2 py-1 rounded'>Clear All Links</button>
@@ -52,13 +52,13 @@ const EditLinkPage = ({user, links, socials}: any) => {
          {links.length > 0 ? <LinkList initialLinks={links} setEditLink={setEditLink} type="LINK" /> : <p className="text-sm text-gray-500">No links added yet</p>}
 
         </div>
+    </div>
+    <div className="bg-white absolute gap-5 px-10 py-7 rounded-2xl shadow-md w-full transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(0)' : 'translateY(-200%)', opacity: editingObject !== 'content' ? 1 : 0}}>
+    <DesignForm user={user}/>
+    </div>
         {editLink && <EditSocial editLink={editLink} setEditLink={setEditLink} socials={socials} links={links}/>}
         {showSocials && <SocialsWindow socials={socials} setShowSocials={setShowSocials} setEditLink={setEditLink}/>}
         {addLink && <AddLink setAddLink={setAddLink}/>}
-    </div>
-    <div style={{transform: editingObject !== 'content' ? 'translateY(-300%)' : 'translateY(-500%)', opacity: editingObject !== 'content' ? 1 : 0}}>
-    <DesignForm/>
-    </div>
     </div>
   )
 }

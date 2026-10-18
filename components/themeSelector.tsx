@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PRESET_THEMES } from "@/lib/themes"
-
+import { usePathname } from "next/navigation"
 
 export function ThemeStep({
   selected,
@@ -14,9 +14,11 @@ export function ThemeStep({
 }: {
   selected: string
   onSelect: (id: string) => void
-  onNext: () => void
+  onNext: () => void 
   onSkip: () => void
 }) {
+  const pathname = usePathname()
+  
   return (
     <div className="space-y-6">
       <div>
@@ -24,7 +26,7 @@ export function ThemeStep({
         <p className="text-sm text-muted-foreground">You can change this later.</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className={`grid ${pathname === "/dashboard/links" ? "grid-cols-4 gap-1" : "grid-cols-2  gap-4" }`}>
         {Object.entries(PRESET_THEMES).map(([key, value]) => {
           const isActive = selected === key
           return (
@@ -34,17 +36,18 @@ export function ThemeStep({
               onClick={() => onSelect(key)}
               whileTap={{ scale: 0.96 }}
               animate={{ scale: isActive ? 1.02 : 1 }}
-              className={`relative rounded-xl w-50 border-2 p-4 text-left ${
+              className={`relative rounded-xl ${pathname === '/dashboard/links' ? 'w-25 p-1' : 'w-80 p-4'} border-2  text-left ${
                 isActive ? "border-brand" : "border-border"
               }`}
             >
               <div
-                className="h-16 rounded-lg mb-3 flex items-end p-2"
+                className="h-16 rounded-lg mb-3 flex flex-col justify-between items-start p-2"
                 style={{ background: value.background }}
               >
+                <div className='font-semibold text-lg' style={{ color: value.textColor }}>A</div>
                 <div
-                  className="rounded px-2 py-1 text-xs"
-                  style={{ background: value.buttonColor, color: value.buttonText }}
+                  className="rounded px-2 py-1 text-xs border-2"
+                  style={{ background: value.buttonColor, color: value.buttonText, borderColor: value.buttonText }}
                 >
                   Link
                 </div>
@@ -66,11 +69,11 @@ export function ThemeStep({
       </div>
 
       <div className="flex justify-between">
-        <Button type="button" variant="ghost" onClick={onSkip}>
+       {pathname !== '/dashboard/links' && <Button type="button" variant="ghost" onClick={onSkip}>
           Skip
-        </Button>
+        </Button>}
         <Button type="button" onClick={onNext}>
-          Next
+         {pathname === '/dashboard/links' ? 'Save' : 'Next' }
         </Button>
       </div>
     </div>

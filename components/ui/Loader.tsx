@@ -1,7 +1,14 @@
-import React from 'react'
+import { createPortal } from 'react-dom'
+import { useEffect, useState } from 'react'
 
 const Loader = () => {
-  return (
+  const [mounted, setMounted] = useState(false)
+ useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+  return createPortal(
     <>
     <style>
        {`.spinner {
@@ -40,14 +47,15 @@ const Loader = () => {
     }
   }`}
       </style>
-    <div className='fixed top-0 left-0 w-screen h-screen bg-gray-500/40'>
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30'>
+    <div className='fixed top-0 left-0 w-screen h-screen bg-gray-500/40 z-40'>
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50'>
                <svg className="spinner" viewBox="0 0 66 66">
       <circle cx="33" cy="33" r="28"></circle>
         </svg>
           </div>
     </div>
-    </>
+    </>,
+    document.body
   )
 }
 

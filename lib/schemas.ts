@@ -26,7 +26,7 @@ export const usernameSchema = z.object({
     .max(20)
     .regex(/^[a-z0-9_-]+$/, "Lowercase letters, numbers, - and _ only"),
 })
-const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/, "Must be a valid hex color")
+const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/, "Must be a valid hex color");
 export const profileSchema = z.object({
   bio: z.string().max(160).optional(),
   theme: z.enum(["default", "night", "ocean", "pastel", "forest", "sunset", "mono", "bee", "custom"]).default("default"),
@@ -36,8 +36,7 @@ export const profileSchema = z.object({
       buttonColor: hexColor,
       buttonText: hexColor,
       textColor: hexColor,
-    })
-    .optional(),
+    }).nullable().optional(),
   avatarUrl: z.url().optional(),
 })
 const socials = ["instagram", "x", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch", "telegram"]

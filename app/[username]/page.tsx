@@ -7,7 +7,7 @@ const page = async ({params}: {params: Promise<{username: string}>}) => {
     where: {
         username: username
     },
-    select: { username: true, id: true, name: true, avatarUrl: true, image: true, theme: true },
+    select: { username: true, id: true, name: true, avatarUrl: true, image: true, theme: true, customColors: true },
    })
    const links = await prisma.link.findMany({
     where: {
