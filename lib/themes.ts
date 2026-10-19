@@ -11,7 +11,7 @@ export const PRESET_THEMES: Record<string, ThemeStyle> = {
   night:   { label: "night",   background: "#0f172a", buttonColor: "#1e293b", buttonText: "#f44141", textColor: "#fed5d5" },
   ocean:   { label: "ocean",   background: "#0c4a6e", buttonColor: "#0284c7", buttonText: "#FDF6E3", textColor: "#e3f3ff" },
   pastel:  { label: "pastel",  background: "#fdf2f8", buttonColor: "#f9a8d4", buttonText: "#DB2777", textColor: "#831843" },
-  forest:  { label: "forest",  background: "#002f17", buttonColor: "#4c2e05", buttonText: "#86EFAC", textColor: "#f0fdf4" },
+  forest:  { label: "forest",  background: "#007b2d", buttonColor: "#4c2e05", buttonText: "#86EFAC", textColor: "#f0fdf4" },
   sunset:  { label: "sunset",  background: "#784BA0", buttonColor: "#FF6B6B", buttonText: "#FFF1A8", textColor: "#FF9F68" },
   mono:    { label: "mono",    background: "#fafaf9", buttonColor: "#0c0a09", buttonText: "#b6b6b6", textColor: "#0c0a09" },
   bee: { label: "bee", background: "#facc15", buttonColor: "#fef3c7", buttonText: "#A16207", textColor: "#0c0a09" },

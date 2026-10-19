@@ -195,6 +195,7 @@ input:focus {
 .glow-box > * {
   position: relative;
   z-index: 2;
+  color: #007b2d;
 }
 body {
   font-family: "Poppins", sans-serif;

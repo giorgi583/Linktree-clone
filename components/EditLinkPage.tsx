@@ -1,5 +1,5 @@
 "use client"
-import { Plus } from 'lucide-react'
+import { Plus, Brush, Palette, Layers } from 'lucide-react'
 import Image from 'next/image'
 import { deleteAllLinks } from '@/app/actions/links'
 import React from 'react';
@@ -20,10 +20,10 @@ const EditLinkPage = ({user, links, socials}: any) => {
   }
   console.log(user, links, socials)
   return (
-    <div className='overflow-hidden relative'>
+    <div className='overflow-hidden relative min-h-150'>
     <div className="flex items-center gap-5 mb-2 relative w-fit">
-    <p className={`${editingObject === 'content' ? 'font-semibold' : ''} cursor-pointer`} onClick={()=> setEditingObject('content')}>content</p>
-    <p className={`${editingObject !== 'content' ? 'font-semibold' : ''} cursor-pointer`} onClick={()=> setEditingObject('design')}>design</p>
+    <p className={`${editingObject === 'content' ? 'font-semibold' : ''} cursor-pointer flex items-center gap-2`} onClick={()=> setEditingObject('content')}>Content<Layers fill={editingObject === 'content' ? 'var(--color-brand-tertiary)' : '#fff'} className='w-5 h-5' /></p>
+    <p className={`${editingObject !== 'content' ? 'font-semibold' : ''} cursor-pointer flex items-center gap-2`} onClick={()=> setEditingObject('design')}>Design<Palette fill={editingObject !== 'content' ? 'var(--color-brand-tertiary)' : '#fff'} className='w-5 h-5' /></p>
    <div className="absolute -bottom-1 left-0 h-[3px] w-1/2 bg-brand transition-all duration-300 ease-in-out" style={{transform: editingObject === 'content' ? 'translateX(0)' : 'translateX(110%)',}}></div>
     </div>
     <div className="absolute flex flex-col gap-5 px-10 py-7 rounded-2xl shadow-md w-full bg-card transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(100%)' : 'translateY(0)', opacity: editingObject !== 'content' ? 0 : 1}}>
@@ -40,8 +40,14 @@ const EditLinkPage = ({user, links, socials}: any) => {
                 <p className="flex items-center gap-3">{socials.filter((social: any) => social.isActive).map((social: any, index: number) =>
                 { 
                   if (index < 5) return (<span key={social.id} onClick={()=> setEditLink(social.platform)} className='cursor-pointer'>{socialIcons[social.platform] || null}</span>)
-                  else if (index === 5) return (<span key={social.id} className="rounded-full cursor-pointer text-teal-800 bg-teal-50 w-7 h-7 flex items-center justify-center">+{socials.length - 5}</span>)
-                  })} <span arial-label="add social" className="text-sm cursor-pointer text-teal-800 rounded-full bg-teal-50 p-1" onClick={() => setShowSocials(true)}><Plus className="w-4 h-4"></Plus></span></p>
+                  else if (index === 5) return (<span key={social.id} className="rounded-full cursor-pointer text-teal-800 bg-teal-50 w-7 h-7 flex items-center justify-center">+{socials.length - 5}</span>)})}
+                  {socials.length === 0 && <>
+                  <span className="text-sm cursor-pointer text-gray-400 hover:text-gray-600">{socialIcons['instagram']}</span>
+                  <span className="text-sm cursor-pointer text-gray-400 hover:text-gray-600">{socialIcons['facebook']}</span>
+                  <span className="text-sm cursor-pointer text-gray-400 hover:text-gray-600">{socialIcons['youtube']}</span>
+                  </>}
+                   <span arial-label="add social" className="text-sm cursor-pointer text-teal-800 rounded-full bg-teal-50 p-1" onClick={() => setShowSocials(true)}><Plus className="w-4 h-4"></Plus></span>
+                  </p>
             </div>
         </div>
         <div className="flex items-center gap-5 justify-between">

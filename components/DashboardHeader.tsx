@@ -28,8 +28,8 @@ const DashboardHeader = ({ username, name }: { username: string | null | undefin
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" aria-hidden="true">
               <defs>
                 <linearGradient id="ribbonGrad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#fde047" />
-                  <stop offset="100%" stopColor="#ca8a04" />
+                  <stop offset="0%" stopColor="var(--color-brand-tertiary)" />
+                  <stop offset="100%" stopColor="var(--color-brand-tertiary)" />
                 </linearGradient>
               </defs>
               <path d="M8,24 C4,16 12,8 16,8 C20,8 28,16 24,24 C20,32 12,24 16,20 C18,18 22,14 20,10"
