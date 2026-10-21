@@ -40,15 +40,16 @@ export const profileSchema = z.object({
   avatarUrl: z.url().optional(),
 })
 const socials = ["instagram", "x", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch", "telegram"]
+
 export const linkSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("LINK"),
     title: z.string().max(50).refine((val) => !socials.includes(val), "Add socials above").optional(),
-    url: z.url(),
+    url: z.url().refine((u) => /^https?:\/\//i.test(u), "Only http and https links are allowed"),
   }),
   z.object({
     type: z.literal("SOCIAL"),
     platform: z.enum(socials),
-    url: z.url(),
+    url: z.url().refine((u) => /^https?:\/\//i.test(u), "Only http and https links are allowed"),
   }),
 ])
