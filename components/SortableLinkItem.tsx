@@ -57,7 +57,7 @@ export function SortableLinkItem({setEditLink, link, toggleActive }: {setEditLin
       <button className="text-stone-400 hover:text-stone-600" aria-label={`Edit ${link.title ?? link.url}`} onClick={() => setEditLink(link.platform || link.title)}>
         <Pencil className="text-stone-400 hover:text-stone-600" size={16} />
       </button>
-      <button type='button' aria-checked={link?.isActive} aria-label={`${link?.isActive ? "Hide" : "Show"} ${link?.title ?? link?.url}`} role='switch' onClick={() => toggleActive(link.id)} className={`relative cursor-pointer rounded-full w-7 h-4 ${link?.isActive ? "bg-teal-600" : "bg-gray-300"}`}><span className={`absolute top-[1.5px] left-[1.5px] h-3.25 w-3.25 rounded-full bg-white transition-transform ${
+      <button type='button' aria-checked={link?.isActive} aria-label={`${link?.isActive ? "Hide" : "Show"} ${link?.title ?? link?.url}`} role='switch' onClick={() => toggleActive(link.id)} className={`relative cursor-pointer rounded-full w-7 h-4 ${link?.isActive ? "bg-brand-secondary" : "bg-gray-300"}`}><span className={`absolute top-[1.5px] left-[1.5px] h-3.25 w-3.25 rounded-full bg-white transition-transform ${
               link?.isActive ? "translate-x-3" : "translate-x-0"
             }`}></span>
             </button>

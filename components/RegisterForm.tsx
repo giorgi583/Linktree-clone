@@ -43,14 +43,14 @@ const RegisterForm = () => {
     </ul>}
 <div>
     {state?.error && <p className="text-sm text-red-500">{state.error}</p>}
-    <a className="text-sm text-fuchsia-900" href="/login">Already have an account? Login</a>
-    <button className="bg-teal-900 text-sm w-full py-2 rounded text-white font-medium my-3 hover:bg-teal-600 transition-all" type="submit">Register</button>
+    <a className="text-sm text-brand" href="/login">Already have an account? Login</a>
+    <button className="bg-brand-secondary text-sm w-full py-2 rounded text-white font-medium my-3 hover:bg-teal-600 transition-all" type="submit">Register</button>
 </div>
 <div className="flex flex-col gap-2 relative">
  <hr className='my-3'></hr>
     <h2 className="text-center absolute top-0 left-[50%] translate-x-[-50%] bg-gray-50 text-gray-500 px-2">Or continue with</h2>
-    <button onClick={() => signIn('google', { callbackUrl: '/onboarding/username' })} className="bg-teal-900 text-sm w-full py-2 rounded text-white font-medium hover:bg-teal-600 transition-all flex items-center gap-2 justify-center" ><FaGoogle />Google</button>
-    <button onClick={() => signIn('github', { callbackUrl: '/onboarding/username' })} className="bg-teal-900 text-sm w-full py-2 rounded text-white font-medium hover:bg-teal-600 transition-all flex items-center gap-2 justify-center"><FaGithub />Github</button>
+    <button onClick={() => signIn('google', { callbackUrl: '/onboarding/username' })} className="bg-brand-secondary text-sm w-full py-2 rounded text-white font-medium hover:bg-teal-600 transition-all flex items-center gap-2 justify-center" ><FaGoogle />Google</button>
+    <button onClick={() => signIn('github', { callbackUrl: '/onboarding/username' })} className="bg-brand-secondary text-sm w-full py-2 rounded text-white font-medium hover:bg-teal-600 transition-all flex items-center gap-2 justify-center"><FaGithub />Github</button>
 </div>
 {isPending && <Loader />}
     </form>

@@ -3,13 +3,22 @@ import { prisma } from "@/lib/db"
 import { redirect } from "next/navigation"
 import { getAnalytics } from "@/lib/analytics"
 import { ClicksChart } from "@/components/clicks-chart"
-
-export default async function AnalyticsPage() {
+import DaysSetter from "@/components/daysSetter"
+type Props = {
+  searchParams: Promise<{
+    days?: string
+  }>
+}
+export default async function AnalyticsPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const parsedDays = Number(params.days);
+const days = parsedDays;
+  console.log(days, parsedDays, params)
   const session = await auth()
   if (!session?.user?.id) redirect("/login")
 
   const [data, user] = await Promise.all([
-    getAnalytics(session.user.id, 30),
+    getAnalytics(session.user.id, days),
     prisma.user.findUnique({
       where: { id: session.user.id },
       select: { username: true },
@@ -19,9 +28,9 @@ export default async function AnalyticsPage() {
   const topMax = data.topLinks[0]?.count ?? 1
 
   return (
-    <div className="mx-auto max-w-3xl space-y-10">
+    <div className={`mx-auto ${days > 30 ? "max-w-4xl" : "max-w-3xl"} space-y-10`}>
       <h1 className="text-2xl font-semibold">Analytics</h1>
-
+      <DaysSetter />
       {data.allTimeClicks === 0 ? (
         <p className="rounded-lg border border-dashed border-[#e7e5e4] p-8 text-sm text-stone-600">
           No clicks yet. Share your page at <strong>/{user?.username}</strong> and
@@ -31,7 +40,7 @@ export default async function AnalyticsPage() {
         <>
           <section className="flex flex-wrap gap-x-12 gap-y-4">
             <div>
-              <p className="text-3xl font-semibold text-[#115e59]">{data.periodClicks}</p>
+              <p className="text-3xl font-semibold text-brand-secondary">{data.periodClicks}</p>
               <p className="text-sm text-stone-500">clicks in the last {data.days} days</p>
             </div>
             <div>
@@ -63,7 +72,7 @@ export default async function AnalyticsPage() {
                     </div>
                     <div className="h-1.5 rounded-full bg-stone-100">
                       <div
-                        className="h-1.5 rounded-full bg-[#701a75]"
+                        className="h-1.5 rounded-full bg-brand"
                         style={{ width: `${(l.count / topMax) * 100}%` }}
                       />
                     </div>

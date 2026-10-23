@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { Link2, BarChart3, UserRound, Settings, LayoutDashboard, LogOut } from "lucide-react"
 import { signOut } from "next-auth/react"
 import userPic from '../public/user-icon.webp'
@@ -10,7 +10,7 @@ import userPic from '../public/user-icon.webp'
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/dashboard/links", label: "Links", icon: Link2 },
-  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/dashboard/analytics?days=30", label: "Analytics", icon: BarChart3 },
   { href: "/dashboard/profile", label: "Profile", icon: UserRound },
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ]
@@ -27,7 +27,8 @@ export function DashboardNav({
   bio: string | null
 }) {
   const pathname = usePathname()
-
+  const searchParams = useSearchParams()
+console.log(pathname, searchParams.get("days"));
   return (
     <>
     <aside className="flex w-16 flex-col justify-between border-r border-[#e7e5e4] py-6 md:w-56 max-sm:hidden">
@@ -36,8 +37,8 @@ export function DashboardNav({
           <svg viewBox="0 0 25 35" width="28" height="28" aria-hidden="true">
             <defs>
               <linearGradient id="navRibbon" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#115e59" />
-                <stop offset="100%" stopColor="#701a75" />
+                <stop offset="0%" stopColor="var(--color-brand)" />
+                <stop offset="100%" stopColor="var(--color-brand-secondary)" />
               </linearGradient>
             </defs>
             <path
@@ -49,8 +50,8 @@ export function DashboardNav({
               strokeLinejoin="round"
             />
           </svg>
-          <span className="hidden text-lg font-semibold text-[#115e59] md:inline">
-            Link<span className="text-[#701a75]">tree</span>
+          <span className="hidden text-lg font-semibold text-brand-secondary md:inline">
+            Link<span className="text-brand">tree</span>
           </span>
         </Link>
 
@@ -104,7 +105,8 @@ export function DashboardNav({
     <aside className="fixed bottom-2 left-2 right-2 z-50 flex gap-2 rounded-full border border-[#e7e5e4] bg-[#fefefe] px-5 py-3 text-stone-500 sm:hidden max-[400px]:px-3 max-[400px]:py-2">
      <nav className="flex items-center justify-between w-full gap-1 px-2">
           {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
-            const isActive = pathname === href
+
+            const isActive = pathname === (searchParams.get("days") ? href.split('?')[0] : href)
             return (
               <Link
                 key={href}

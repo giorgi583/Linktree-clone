@@ -55,7 +55,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 :root {
-  --brand: oklch(39.241% 0.18733 321.059);
+  --brand: oklch(65.155% 0.31175 320.625);
   --brand-secondary: oklch(48.103% 0.08213 194.807);
   --brand-tertiary: oklch(84.848% 0.18072 105.856);
   --muted: oklch(0.97 0 0);
@@ -92,7 +92,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 .dark {
-  --brand: oklch(57.642% 0.27537 320.928);
+  --brand: oklch(64.907% 0.30971 320.796);
   --brand-secondary: oklch(67.72% 0.16288 156.465);
   --brand-tertiary: oklch(84.848% 0.18072 105.856);
   --background: oklch(0.145 0 0);
@@ -153,6 +153,18 @@ input[type="color"]::-webkit-color-swatch {
 input:focus {
   border: 2px solid var(--color-brand-secondary);
 }
+select {
+  border: 2px dashed var(--color-brand-secondary);
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+}
+select::-webkit-keygen-selector {
+  display: none;
+}
+select:focus {
+  border: 2px solid var(--color-brand-secondary);
+}
 .glow-box::before {
   content: "";
   position: absolute;
@@ -195,7 +207,6 @@ input:focus {
 .glow-box > * {
   position: relative;
   z-index: 2;
-  color: #007b2d;
 }
 body {
   font-family: "Poppins", sans-serif;

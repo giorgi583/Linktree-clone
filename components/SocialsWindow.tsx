@@ -20,7 +20,7 @@ const SocialsWindow = ({socials, setShowSocials, setEditLink}: {socials: any[], 
             <div className='flex flex-col gap-4 min-h-60 p-2 max-h-80 rounded-lg overflow-y-scroll custom-scrollbar'>
                        <LinkList initialLinks={socials} setEditLink={setEditLink} type="SOCIAL" />
             </div>
-            <button onClick={() => setStep('addsocials')} className='p-2 px-4 bg-fuchsia-700 self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-5 h-5' />Add Social Icon</button>
+            <button onClick={() => setStep('addsocials')} className='p-2 px-4 bg-brand self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-5 h-5' />Add Social Icon</button>
         </div> )
         : step === 'addsocials' ? ( <SocialsList setStep={setStep} socials={socials} setChosenSocial={setChosenSocial}/> )
         : step === 'addLink' && ( <AddSocialLink chosenSocial={chosenSocial} /> )

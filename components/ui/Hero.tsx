@@ -37,7 +37,7 @@ const Hero = () => {
 
             <section id="hero" className="relative flex flex-col items-center max-md:px-2 bg-[#8a8df2] pb-20 pt-5 bg-[url('https://assets.prebuiltui.com/components/hero-section/hero-linear-gradient.png')] bg-cover bg-center bg-no-repeat">
                 <nav className="flex items-center w-full max-w-6xl justify-between text-slate-100">
-                   <h1 className="text-4xl font-bold text-fuchsia-800">Link<span className="text-cyan-800">tree</span></h1>
+                   <h1 className="text-4xl font-bold text-brand">Link<span className="text-brand-secondary">tree</span></h1>
                     <div id="menu" className={`${mobileOpen ? 'max-md:left-0' : 'max-md:-left-full'} max-md:fixed max-md:bg-black/70 max-md:backdrop-blur max-md:top-0 transition-all duration-300 max-md:h-screen max-md:w-full max-md:z-50 max-md:justify-center flex-col md:flex-row flex items-center gap-2 text-sm`}>
                         <a className="px-4 py-2  text-slate-100 hover:text-slate-200" href="#hero" onClick={() => setMobileOpen(false)}>Home</a>
                         <a className="px-4 py-2 text-slate-100 hover:text-slate-200" href="#features" onClick={() => setMobileOpen(false)}>Features</a>
@@ -59,11 +59,11 @@ const Hero = () => {
                     </button>
                     <div className="hidden md:block p-px rounded-full">
                        {session ? (
-                            <Link href="/dashboard" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                            <Link href="/dashboard" className="bg-brand-secondary hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
                                 Go to Dashboard
                             </Link>
                         ) : (
-                            <Link href="/register" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                            <Link href="/register" className="bg-brand-secondary hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
                                 Get started for free
                             </Link>
                         )}
@@ -83,11 +83,11 @@ const Hero = () => {
 
                 <div className="flex items-center gap-2 mt-8 text-sm">
                    {session ? (
-                            <Link href="/dashboard" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                            <Link href="/dashboard" className="bg-brand-secondary hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
                                 Go to Dashboard
                             </Link>
                         ) : (
-                            <Link href="/register" className="bg-cyan-700 hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
+                            <Link href="/register" className="bg-brand-secondary hover:bg-cyan-800 text-white text-sm tracking-wide px-4 py-3 rounded-full transition cursor-pointer">
                                 Get started for free
                             </Link>
                         )}

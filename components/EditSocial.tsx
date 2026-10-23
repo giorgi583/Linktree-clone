@@ -26,7 +26,7 @@ if (Object.keys(socialIcons).includes(editLink) && editLink !== linkTitle)  retu
                     <input required type='text' id='username' name='username' defaultValue={username} placeholder={`Edit your ${editLink} username`} className='w-full p-2 border border-gray-300 rounded-lg'/>
                 </div>
                 <p className='text-sm text-gray-500'>example: <span className='font-semibold'>@username</span></p>
-                <button type='submit' className='p-2 px-4 bg-fuchsia-700 self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'>Update Link</button>
+                <button type='submit' className='p-2 px-4 bg-brand self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'>Update Link</button>
             </form>
             {actionState?.error && <p className="text-sm text-red-500">{actionState.error}</p>}
         </div>

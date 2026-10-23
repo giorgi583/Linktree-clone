@@ -39,6 +39,7 @@ const handleShare = (url: string) => {
     url: url
   })
 }
+console.log(window.location.host)
   return (
     <>
 <style>
@@ -67,7 +68,7 @@ const handleShare = (url: string) => {
               strokeLinejoin="round"
             />
           </svg></Link>
-          <button onClick={() => handleShare(window.location.href)} className='rounded-2xl px-2 py-2 text-white backdrop-blur-lg' style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}}><Upload size={isPreview ? 13 : 20}/></button>
+          <button onClick={() => handleShare(!isPreview ? window.location.href : 'https://' + window.location.host +`/${user?.username}`)} className='rounded-2xl px-2 py-2 text-white backdrop-blur-lg' style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}}><Upload size={isPreview ? 13 : 20}/></button>
     </div>
     <div className="flex flex-col justify-center items-center gap-5">
     <div className={`${isPreview ? 'h-20 w-20' : 'h-25 w-25 '} rounded-full ring-2 ring-offset-2`} style={{

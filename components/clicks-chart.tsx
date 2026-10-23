@@ -27,7 +27,7 @@ export function ClicksChart({ data }: { data: Day[] }) {
             className="flex h-full flex-1 items-end"
           >
             <div
-              className={`w-full rounded-t-sm ${d.count ? "bg-[#115e59]" : "bg-stone-200"}`}
+              className={`w-full rounded-t-sm ${d.count ? "bg-brand-secondary" : "bg-stone-200"}`}
               style={{ height: d.count ? `${Math.max(4, (d.count / max) * 100)}%` : "2px" }}
             />
           </div>

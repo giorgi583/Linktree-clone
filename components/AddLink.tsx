@@ -31,7 +31,7 @@ const AddLink = ({setAddLink}: any) => {
                     <label htmlFor="linkUrl" className='block text-sm font-medium text-gray-700'>Link URL</label>
                     <input required type="url" id="linkUrl" name="url" className='mt-1 p-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' />
                 </div>
-                <button type="submit" disabled={ispending} className='p-2 px-4 mt-5 bg-fuchsia-700 self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-5 h-5' />Add Link</button>
+                <button type="submit" disabled={ispending} className='p-2 px-4 mt-5 bg-brand self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-5 h-5' />Add Link</button>
             </form>
         </div>
         {ispending && <Loader />}

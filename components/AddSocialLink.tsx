@@ -35,7 +35,7 @@ const AddSocialLink = ({chosenSocial}: {chosenSocial: string | null}) => {
                     <input required type='text' id='username' name='username' value={username} onChange={(e) => setUsername(e.target.value)} placeholder={`Enter your ${chosenSocial} username`} className='w-full p-2 border border-gray-300 rounded-lg'/>
                 </div>
                 <p className='text-sm text-gray-500'>example: <span className='font-semibold'>@username</span></p>
-                <button type='submit' className='p-2 px-4 bg-fuchsia-700 self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'>Add Link</button>
+                <button type='submit' className='p-2 px-4 bg-brand self-end text-white rounded-full hover:bg-fuchsia-600 flex gap-2 items-center'>Add Link</button>
             {actionState?.error && <p className='text-sm text-red-500'>{actionState.error}</p>}
             </form>
         </div>

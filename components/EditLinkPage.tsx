@@ -52,7 +52,7 @@ const EditLinkPage = ({user, links, socials}: any) => {
         </div>
         <div className="flex items-center gap-5 justify-between">
           <button className='p-2 bg-slate-50 rounded text-sm border-b-2 border-slate-300'>Links</button>
-       <button onClick={() => setAddLink(true)} className='p-2 bg-fuchsia-700 text-white rounded hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-4 h-4'/> Add Link</button>
+       <button onClick={() => setAddLink(true)} className='p-2 bg-brand text-white rounded hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-4 h-4'/> Add Link</button>
         </div>
         <div className='min-h-60 max-h-70 overflow-y-scroll custom-scrollbar'>
          {links.length > 0 ? <LinkList initialLinks={links} setEditLink={setEditLink} type="LINK" /> : <p className="text-sm text-gray-500">No links added yet</p>}
