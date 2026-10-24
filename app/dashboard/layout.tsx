@@ -21,6 +21,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
         avatarUrl={user.avatarUrl ?? user.image}
         bio={user.bio}
       />
-      <main className="flex-1 px-6 py-8 md:px-10">{children}</main>
+      <main className="flex-1 px-6 py-8 md:px-10 overflow-y-scroll">{children}</main>
     </div>)
 }

@@ -28,7 +28,7 @@ export function DashboardNav({
 }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-console.log(pathname, searchParams.get("days"));
+
   return (
     <>
     <aside className="flex w-16 flex-col justify-between border-r border-[#e7e5e4] py-6 md:w-56 max-sm:hidden">
@@ -57,7 +57,7 @@ console.log(pathname, searchParams.get("days"));
 
         <nav className="flex flex-col gap-1 px-2">
           {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
-            const isActive = pathname === href
+            const isActive = pathname === (searchParams.get("days") ? href.split('?')[0] : href)
             return (
               <Link
                 key={href}

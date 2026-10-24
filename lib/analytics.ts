@@ -9,7 +9,7 @@ export async function getAnalytics(userId: string, days = 30) {
   const [clicks, links] = await Promise.all([
     prisma.linkClick.findMany({
       where: { createdAt: { gte: since }, link: { userId } },
-      select: { createdAt: true, device: true },
+      select: { createdAt: true, device: true, country: true, linkId: true },
     }),
     prisma.link.findMany({
       where: { userId },
@@ -51,11 +51,35 @@ export async function getAnalytics(userId: string, days = 30) {
     .filter((l) => l.count > 0)
     .sort((a, b) => b.count - a.count)
     .slice(0, 5)
+  
+  const linksByClicks = links.map((l)=> {
+    return {id: l.id, label: l.title || l.platform, clicks: l.clicks}});
+  const clicksByCountry = await prisma.linkClick.groupBy({
+    by: ["country"],
+    where: {
+      createdAt: {
+        gte: since,
+      },
+      country: {
+        not: null,
+      },
+    },
+    _count: {
+      _all: true,
+    },
+    orderBy: {
+      _count: {
+        linkId: "desc",
+      },
+    },
+  })
 
   return {
     days,
     daily,
     periodClicks: clicks.length,
+    clicksByCountry,
+    linksByClicks,
     allTimeClicks: links.reduce((sum, l) => sum + l.clicks, 0),
     mobilePercent: clicks.length ? Math.round((mobile / clicks.length) * 100) : 0,
     topLinks,

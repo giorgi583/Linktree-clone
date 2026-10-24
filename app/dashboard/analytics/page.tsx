@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { getAnalytics } from "@/lib/analytics"
 import { ClicksChart } from "@/components/clicks-chart"
 import DaysSetter from "@/components/daysSetter"
+import PieChart from "@/components/PieChart"
 type Props = {
   searchParams: Promise<{
     days?: string
@@ -13,7 +14,7 @@ export default async function AnalyticsPage({ searchParams }: Props) {
   const params = await searchParams;
   const parsedDays = Number(params.days);
 const days = parsedDays;
-  console.log(days, parsedDays, params)
+  console.log('days:', days)
   const session = await auth()
   if (!session?.user?.id) redirect("/login")
 
@@ -26,7 +27,7 @@ const days = parsedDays;
   ])
 
   const topMax = data.topLinks[0]?.count ?? 1
-
+console.log('data:', data)
   return (
     <div className={`mx-auto ${days > 30 ? "max-w-4xl" : "max-w-3xl"} space-y-10`}>
       <h1 className="text-2xl font-semibold">Analytics</h1>
@@ -52,6 +53,10 @@ const days = parsedDays;
               <p className="text-sm text-stone-500">from mobile</p>
             </div>
           </section>
+            <section className="flex flex-wrap gap-x-12 gap-y-4">
+              <PieChart data={data?.clicksByCountry} label='Countries' />
+              <PieChart data={data?.linksByClicks} label='Links' />
+            </section>
 
           <section>
             <h2 className="mb-3 text-sm font-medium text-stone-700">Clicks per day</h2>

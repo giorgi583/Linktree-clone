@@ -54,7 +54,7 @@ useEffect(() => {
          <div onClick={()=> {setEnabledCustomColors(!enabledCustomColors); if(enabledCustomColors) disableCustomColors()}} className={`rounded-full relative cursor-pointer w-8 h-4 ${enabledCustomColors ? 'bg-brand-secondary' : 'bg-gray-300'}`}><div className={`absolute rounded-full w-3.5 h-3.5 top-[1.5px] left-[2px] bg-white transition-all duration-300 ease-in-out ${enabledCustomColors ? 'translate-x-full' : ''}`}></div></div>
        </div>
        <form action={formAction} className='grid grid-cols-2 gap-2'>
-        <input type='text' hidden id='theme' name='theme' value={selectedtheme || theme.label}></input>
+        <input readOnly type='text' hidden id='theme' name='theme' value={selectedtheme || theme.label}></input>
       <div className='flex justify-between gap-2 items-center p-2 rounded-lg border border-gray-300'>
         <label htmlFor="background">Background</label>
         <input disabled={!enabledCustomColors}  className='h-10 w-10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer appearance-none bg-transparent rounded-full border-0 p-0' type="color" id="background" name="background" value={customColors.background} onChange={(e)=> setCustomColors({...customColors, background: e.target.value})}/>

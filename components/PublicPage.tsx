@@ -23,15 +23,10 @@ useEffect(() => {
     isPreview ? container?.removeEventListener('scroll', handleScroll) : window.removeEventListener('scroll', handleScroll);
   };
 }, []);
-{socials?.map((social: any) => {
-  console.log("platform:", JSON.stringify(social.platform));
-console.log("type:", typeof social.platform);
-console.log("keys:", Object.keys(socialIcons));
-console.log("has key:", Object.hasOwn(socialIcons, social.platform));
-})}
+
 const theme = user?.theme && PRESET_THEMES[user.theme] ? PRESET_THEMES[user.theme] : PRESET_THEMES.default;
 const customColors = user?.customColors ?? null;  
-console.log("customColors:", user, customColors, theme);
+
 const handleShare = (url: string) => {
   navigator.share({
     title: "Check out my page!",
@@ -39,7 +34,7 @@ const handleShare = (url: string) => {
     url: url
   })
 }
-console.log(window.location.host)
+
   return (
     <>
 <style>
