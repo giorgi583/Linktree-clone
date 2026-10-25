@@ -52,6 +52,7 @@ model Link {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   @@unique([userId, platform])
+  @@unique([userId, url])
   @@index([userId, type, order])
 }
 model LinkClick {

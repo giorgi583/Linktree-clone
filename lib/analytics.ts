@@ -52,7 +52,7 @@ export async function getAnalytics(userId: string, days = 30) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 5)
   
-  const linksByClicks = links.map((l)=> {
+  const linksByClicks = links.filter(l => l.clicks > 0).map((l)=> {
     return {id: l.id, label: l.title || l.platform, clicks: l.clicks}});
   const clicksByCountry = await prisma.linkClick.groupBy({
     by: ["country"],
@@ -63,6 +63,9 @@ export async function getAnalytics(userId: string, days = 30) {
       country: {
         not: null,
       },
+      link: {
+        userId,
+      }
     },
     _count: {
       _all: true,

@@ -53,7 +53,7 @@ console.log('data:', data)
               <p className="text-sm text-stone-500">from mobile</p>
             </div>
           </section>
-            <section className="flex flex-wrap gap-x-12 gap-y-4">
+            <section className="grid grid-cols-2 grid-rows-1 gap-x-5 w-full items-center my-20 justify-between bg-accent rounded-lg">
               <PieChart data={data?.clicksByCountry} label='Countries' />
               <PieChart data={data?.linksByClicks} label='Links' />
             </section>

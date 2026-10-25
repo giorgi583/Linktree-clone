@@ -5,6 +5,7 @@ import { linkSchema } from '../../lib/schemas'
 import { revalidatePath } from "next/cache"
 import * as cheerio from "cheerio"
 import { LetterText } from "lucide-react"
+import { Prisma } from "@/lib/generated/prisma/client"
 export async function createLink(prevState: any, formData: FormData) {
   const session = await auth()
   if (!session?.user?.id) return { error: "Not signed in" }
@@ -14,6 +15,11 @@ export async function createLink(prevState: any, formData: FormData) {
    url: formData.get("url"),
    platform: formData.get("platform") ?? undefined,
   })
+  const duplicate = await prisma.link.findFirst({
+  where: { userId: session.user.id, url: parsed.data?.url },
+  select: { id: true },
+})
+if (duplicate) return { error: "You already have a link with this URL" }
   if (!parsed.success) return { error: parsed.error.issues[0].message }
   if(parsed.data.type === 'LINK' && !parsed.data.title) {
     const url = parsed.data.url
@@ -36,8 +42,13 @@ export async function createLink(prevState: any, formData: FormData) {
     select: { order: true },
   })
   const nextOrder = lastLink ? lastLink.order + 1 : 0
-  await prisma.link.create({ data: { ...parsed.data, userId: session?.user.id, order: nextOrder } })
- revalidatePath("/dashboard/links")
+  try { await prisma.link.create({ data: { ...parsed.data, userId: session?.user.id, order: nextOrder } })
+ revalidatePath("/dashboard/links") } catch (e: any) {
+   if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
+    return { error: "That link already exists" }
+  }
+  throw e
+ }
   return { success: true }  
 }
 

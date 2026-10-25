@@ -41,15 +41,28 @@ export const profileSchema = z.object({
 })
 const socials = ["instagram", "x", "github", "linkedin", "youtube", "tiktok", "facebook", "snapchat", "pinterest", "reddit", "discord", "twitch", "telegram"]
 
+export function normalizeUrl(input: string): string {
+  const u = new URL(input.trim())
+  u.hash = "" // #fragments don't change the destination page
+  if (u.pathname.length > 1 && u.pathname.endsWith("/")) {
+    u.pathname = u.pathname.slice(0, -1) // /you/ and /you are the same page
+  }
+  return u.toString()
+}
+const httpUrl = z
+  .url()
+  .refine((u) => /^https?:\/\//i.test(u), "Only http and https links are allowed")
+  .transform(normalizeUrl)
+  
 export const linkSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("LINK"),
     title: z.string().max(50).refine((val) => !socials.includes(val), "Add socials above").optional(),
-    url: z.url().refine((u) => /^https?:\/\//i.test(u), "Only http and https links are allowed"),
+    url: httpUrl,
   }),
   z.object({
     type: z.literal("SOCIAL"),
     platform: z.enum(socials),
-    url: z.url().refine((u) => /^https?:\/\//i.test(u), "Only http and https links are allowed"),
+    url: httpUrl,
   }),
 ])
