@@ -1,6 +1,5 @@
-import React from 'react'
+
 import PublicPage from './PublicPage'
-import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
 
 const PublicPagePreview = ({user, links, socials}: any) => {

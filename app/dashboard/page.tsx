@@ -1,6 +1,7 @@
 import {auth} from '@/auth'
 import DashboardHeader from '@/components/DashboardHeader'
 import LinkProfile from '@/components/LinkProfile'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { prisma } from '@/lib/db'
 import { redirect } from "next/navigation"
 const page = async () => {
@@ -24,6 +25,7 @@ const page = async () => {
     <div >
       <DashboardHeader username={user?.username} name={user?.name}/>
       <LinkProfile user={user} links={links}/>
+      <ThemeToggle />
       </div>
   )
 }

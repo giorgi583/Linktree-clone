@@ -33,7 +33,7 @@ console.log('data:', data)
       <h1 className="text-2xl font-semibold">Analytics</h1>
       <DaysSetter />
       {data.allTimeClicks === 0 ? (
-        <p className="rounded-lg border border-dashed border-[#e7e5e4] p-8 text-sm text-stone-600">
+        <p className="rounded-lg border border-dashed border-[#e7e5e4] p-8 text-sm text-muted-foreground">
           No clicks yet. Share your page at <strong>/{user?.username}</strong> and
           clicks will show up here.
         </p>
@@ -42,15 +42,15 @@ console.log('data:', data)
           <section className="flex flex-wrap gap-x-12 gap-y-4">
             <div>
               <p className="text-3xl font-semibold text-brand-secondary">{data.periodClicks}</p>
-              <p className="text-sm text-stone-500">clicks in the last {data.days} days</p>
+              <p className="text-sm text-muted-foreground">clicks in the last {data.days} days</p>
             </div>
             <div>
               <p className="text-3xl font-semibold">{data.allTimeClicks}</p>
-              <p className="text-sm text-stone-500">clicks all time</p>
+              <p className="text-sm text-muted-foreground">clicks all time</p>
             </div>
             <div>
               <p className="text-3xl font-semibold">{data.mobilePercent}%</p>
-              <p className="text-sm text-stone-500">from mobile</p>
+              <p className="text-sm text-muted-foreground">from mobile</p>
             </div>
           </section>
             <section className="grid grid-cols-2 grid-rows-1 gap-x-5 w-full items-center my-20 justify-between bg-accent rounded-lg">
@@ -59,21 +59,21 @@ console.log('data:', data)
             </section>
 
           <section>
-            <h2 className="mb-3 text-sm font-medium text-stone-700">Clicks per day</h2>
+            <h2 className="mb-3 text-sm font-medium text-muted-foreground">Clicks per day</h2>
             <ClicksChart data={data.daily} />
           </section>
 
           <section>
-            <h2 className="mb-3 text-sm font-medium text-stone-700">Top links</h2>
+            <h2 className="mb-3 text-sm font-medium text-muted-foreground">Top links</h2>
             {data.topLinks.length === 0 ? (
-              <p className="text-sm text-stone-500">No clicks in this period.</p>
+              <p className="text-sm text-muted-foreground">No clicks in this period.</p>
             ) : (
               <ul className="space-y-3">
                 {data.topLinks.map((l) => (
                   <li key={l.id}>
                     <div className="mb-1 flex justify-between text-sm">
                       <span className="truncate">{l.label}</span>
-                      <span className="text-stone-500">{l.count}</span>
+                      <span className="text-muted-foreground">{l.count}</span>
                     </div>
                     <div className="h-1.5 rounded-full bg-stone-100">
                       <div

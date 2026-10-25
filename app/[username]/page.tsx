@@ -29,8 +29,10 @@ const page = async ({params}: {params: Promise<{username: string}>}) => {
    })
    console.log(username, user, links, socials)
   const theme = user?.theme && PRESET_THEMES[user.theme] ? PRESET_THEMES[user.theme] : PRESET_THEMES.default;
+  const customColors: any = user?.customColors ? user.customColors : null;
+  console.log(customColors)
   return (
-    <div className="min-h-screen flex justify-center" style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}}>
+    <div className="min-h-screen flex justify-center" style={{background: `radial-gradient(circle, ${customColors?.background || theme.background}, ${ customColors?.textColor || theme.textColor})`}}>
         <div className='min-w-100 max-w-120 mt-10'>
             <PublicPage user={user} links={links} socials={socials}/>
         </div>

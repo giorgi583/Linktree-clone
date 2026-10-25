@@ -22,11 +22,11 @@ const EditLinkPage = ({user, links, socials}: any) => {
   return (
     <div className='overflow-hidden relative min-h-150'>
     <div className="flex items-center gap-5 mb-2 relative w-fit">
-    <p className={`${editingObject === 'content' ? 'font-semibold' : ''} cursor-pointer flex items-center gap-2`} onClick={()=> setEditingObject('content')}>Content<Layers fill={editingObject === 'content' ? 'var(--color-brand-tertiary)' : '#fff'} className='w-5 h-5' /></p>
-    <p className={`${editingObject !== 'content' ? 'font-semibold' : ''} cursor-pointer flex items-center gap-2`} onClick={()=> setEditingObject('design')}>Design<Palette fill={editingObject !== 'content' ? 'var(--color-brand-tertiary)' : '#fff'} className='w-5 h-5' /></p>
+    <p className={`${editingObject === 'content' ? 'font-semibold' : ''} cursor-pointer flex items-center gap-2`} onClick={()=> setEditingObject('content')}>Content<Layers color='var(--color-brand)' fill={editingObject === 'content' ? 'var(--color-brand-tertiary)' : 'var(--color-background)'} className='w-5 h-5' /></p>
+    <p className={`${editingObject !== 'content' ? 'font-semibold' : ''} cursor-pointer flex items-center gap-2`} onClick={()=> setEditingObject('design')}>Design<Palette color='var(--color-brand)' fill={editingObject !== 'content' ? 'var(--color-brand-tertiary)' : 'var(--color-background)'} className='w-5 h-5' /></p>
    <div className="absolute -bottom-1 left-0 h-[3px] w-1/2 bg-brand transition-all duration-300 ease-in-out" style={{transform: editingObject === 'content' ? 'translateX(0)' : 'translateX(110%)',}}></div>
     </div>
-    <div className="absolute flex flex-col gap-5 px-10 py-7 rounded-2xl shadow-md w-full bg-card transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(100%)' : 'translateY(0)', opacity: editingObject !== 'content' ? 0 : 1}}>
+    <div className="absolute flex flex-col gap-5 px-10 py-7 rounded-2xl shadow-md w-full bg-primary-foreground transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(100%)' : 'translateY(0)', opacity: editingObject !== 'content' ? 0 : 1}}>
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Content</h1>
           <button onClick={handleDelete} className='bg-brand text-white px-2 py-1 rounded'>Clear All Links</button>
@@ -40,18 +40,18 @@ const EditLinkPage = ({user, links, socials}: any) => {
                 <p className="flex items-center gap-3">{socials.filter((social: any) => social.isActive).map((social: any, index: number) =>
                 { 
                   if (index < 5) return (<span key={social.id} onClick={()=> setEditLink(social.platform)} className='cursor-pointer'>{socialIcons[social.platform] || null}</span>)
-                  else if (index === 5) return (<span key={social.id} className="rounded-full cursor-pointer text-teal-800 bg-teal-50 w-7 h-7 flex items-center justify-center">+{socials.length - 5}</span>)})}
+                  else if (index === 5) return (<span key={social.id} className="rounded-full cursor-pointer text-brand-secondary bg-muted-foreground/20 w-7 h-7 flex items-center justify-center">+{socials.length - 5}</span>)})}
                   {socials.length === 0 && <>
-                  <span className="text-sm cursor-pointer text-gray-400 hover:text-gray-600">{socialIcons['instagram']}</span>
-                  <span className="text-sm cursor-pointer text-gray-400 hover:text-gray-600">{socialIcons['facebook']}</span>
-                  <span className="text-sm cursor-pointer text-gray-400 hover:text-gray-600">{socialIcons['youtube']}</span>
+                  <span className="text-sm cursor-pointer text-muted-foreground hover:text-gray-600">{socialIcons['instagram']}</span>
+                  <span className="text-sm cursor-pointer text-muted-foreground hover:text-gray-600">{socialIcons['facebook']}</span>
+                  <span className="text-sm cursor-pointer text-muted-foreground hover:text-gray-600">{socialIcons['youtube']}</span>
                   </>}
-                   <span arial-label="add social" className="text-sm cursor-pointer text-teal-800 rounded-full bg-teal-50 p-1" onClick={() => setShowSocials(true)}><Plus className="w-4 h-4"></Plus></span>
+                   <span arial-label="add social" className="text-sm cursor-pointer text-brand-secondary rounded-full bg-muted-foreground/20 p-1" onClick={() => setShowSocials(true)}><Plus className="w-4 h-4"></Plus></span>
                   </p>
             </div>
         </div>
         <div className="flex items-center gap-5 justify-between">
-          <button className='p-2 bg-slate-50 rounded text-sm border-b-2 border-slate-300'>Links</button>
+          <button className='p-2 bg-accent rounded text-sm border-b-2 border-slate-300'>Links</button>
        <button onClick={() => setAddLink(true)} className='p-2 bg-brand text-white rounded hover:bg-fuchsia-600 flex gap-2 items-center'><Plus className='w-4 h-4'/> Add Link</button>
         </div>
         <div className='min-h-60 max-h-70 overflow-y-scroll custom-scrollbar'>
@@ -59,7 +59,7 @@ const EditLinkPage = ({user, links, socials}: any) => {
 
         </div>
     </div>
-    <div className="bg-white absolute gap-5 px-10 py-7 rounded-2xl shadow-md w-full transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(0)' : 'translateY(-200%)', opacity: editingObject !== 'content' ? 1 : 0}}>
+    <div className="bg-primary-foreground absolute gap-5 px-10 py-7 rounded-2xl shadow-md w-full transition-all duration-300 ease-in-out" style={{transform: editingObject !== 'content' ? 'translateY(0)' : 'translateY(-200%)', opacity: editingObject !== 'content' ? 1 : 0}}>
     <DesignForm user={user}/>
     </div>
         {editLink && <EditSocial editLink={editLink} setEditLink={setEditLink} socials={socials} links={links}/>}

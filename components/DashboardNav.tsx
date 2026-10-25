@@ -64,8 +64,8 @@ export function DashboardNav({
                 href={href}
                 className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors ${
                   isActive
-                    ? "bg-[#115e59]/10 text-brand-secondary font-medium"
-                    : "text-stone-600 hover:bg-stone-100"
+                    ? "bg-[#115e59]/20 text-brand-secondary font-medium"
+                    : "text-sidebar-accent-foreground hover:bg-accent"
                 }`}
               >
                 <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
@@ -98,7 +98,7 @@ export function DashboardNav({
           ) : (
             <div><Image src={userPic} alt={name ?? username} className="h-6 w-6 rounded-full" /></div>
           )}
-          <span className="hidden truncate md:flex md:items-center md:gap-2 text-red-800">Log out <LogOut className="w-4 h-4" /></span>
+          <span className="hidden truncate md:flex md:items-center md:gap-2 text-destructive">Log out <LogOut className="w-4 h-4" /></span>
         </button>
       </div>
     </aside>

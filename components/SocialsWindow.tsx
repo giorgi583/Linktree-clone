@@ -12,7 +12,7 @@ const SocialsWindow = ({socials, setShowSocials, setEditLink}: {socials: any[], 
   return (
       <div className='fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50'>
         {step === 'mysocials' ? (
-          <div className='bg-white rounded-xl p-8 w-106 relative flex flex-col gap-4'>
+          <div className='bg-popover rounded-xl p-8 w-106 relative flex flex-col gap-4'>
             <h2 className='text-lg font-semibold mb-4 self-center'>Social icons</h2>
             <h3 className='font-semibold'>Show visitors where to find you</h3>
             <p className='text-sm text-gray-500'>Add your social profiles, email and more as linked icons on your Linktree.</p>

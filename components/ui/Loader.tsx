@@ -47,8 +47,8 @@ const Loader = () => {
     }
   }`}
       </style>
-    <div className='fixed top-0 left-0 w-screen h-screen bg-gray-500/40 z-40'>
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50'>
+    <div className='fixed top-0 left-0 w-screen h-screen bg-gray-500/40 z-100'>
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-120'>
                <svg className="spinner" viewBox="0 0 66 66">
       <circle cx="33" cy="33" r="28"></circle>
         </svg>

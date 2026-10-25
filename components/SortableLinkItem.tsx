@@ -35,7 +35,7 @@ export function SortableLinkItem({setEditLink, link, toggleActive }: {setEditLin
     <li
       ref={setNodeRef}
       style={style}
-      className={`flex items-center gap-3 rounded-lg border border-[#e7e5e4] bg-white px-3 py-3 ${
+      className={`flex items-center gap-3 rounded-lg border border-border bg-background px-3 py-3 ${
         isDragging ? "relative z-10 shadow-lg opacity-90" : ""
       }`}
     >
@@ -44,7 +44,7 @@ export function SortableLinkItem({setEditLink, link, toggleActive }: {setEditLin
         {...attributes}
         {...listeners}
         aria-label={`Reorder ${link.title ?? link.url}`}
-        className="cursor-grab touch-none text-stone-400 hover:text-stone-600 active:cursor-grabbing"
+        className="cursor-grab touch-none text-muted-foreground hover:text-secondary-foreground active:cursor-grabbing"
       >
         <GripVertical size={18} />
       </button>

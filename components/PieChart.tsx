@@ -54,7 +54,7 @@ const gradient = data?.map((item: any, i: number) => {
     background: `conic-gradient(${gradient})`,
   }}
 />
-<div className="flex flex-wrap gap-5 max-w-80 bg-white p-2 rounded">
+<div className="flex flex-wrap gap-5 max-w-80 bg-background p-2 rounded">
     {data?.map((item: any, i: number) => (
       <div key={i} className="flex items-center gap-2">
         <span className='w-4 h-4 rounded-full' style={{background: colors[i % colors.length]}}></span>

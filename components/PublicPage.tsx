@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { EllipsisVertical, Upload } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 const PublicPage = ({user, links, socials}: any) => {
 const [isVisible, setIsVisible] = useState(true);
 const pathname = usePathname();
 const isPreview = pathname === '/dashboard/links';
-
+const gradientId = useId();
 useEffect(() => {
   const container = document.getElementById('scroll-container');
   const handleScroll = () => {
@@ -39,7 +39,7 @@ const handleShare = (url: string) => {
     <>
 <style>
  {`@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oxanium:wght@200..800&family=Roboto+Slab:wght@100..900&display=swap');
- h2, a {
+ h2 {
  font-family: 'oxanium', sans-serif;
  }
  `
@@ -47,9 +47,9 @@ const handleShare = (url: string) => {
 </style>
     <div className={`flex flex-col justify-between items-center gap-5 w-full shadow-2xl h-full ${isPreview ? 'rounded-none p-2' : 'rounded-tl-3xl rounded-tr-3xl p-8'}`} style={{background: customColors?.background || theme.background, color: customColors?.textColor || theme.textColor}}>
     <div className={`flex justify-between items-center z-50 w-full sticky transition-all duration-200 ${isPreview ? 'top-2' : 'top-5'} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
-    <Link href={'/'} className='rounded-2xl px-2 py-1 text-white backdrop-blur-[5px]'  style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}}><svg viewBox="0 0 35 35" width={isPreview ? "20" : "35"} height={ isPreview ? "20" : "35"} aria-hidden="true">
+    <Link href={'/'} className='rounded-2xl px-2 py-1 text-white backdrop-blur-[5px]'  style={{backgroundColor: `color-mix(in srgb, ${ customColors?.background || theme.background}, ${ customColors?.textColor || theme.textColor})`}}><svg viewBox="0 0 35 35" width={isPreview ? "20" : "35"} height={ isPreview ? "20" : "35"} aria-hidden="true">
             <defs>
-              <linearGradient id="navRibbon" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+              <linearGradient id={gradientId} x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="var(--color-brand-tertiary)" />
                 <stop offset="100%" stopColor="var(--color-brand-tertiary)" />
               </linearGradient>
@@ -57,13 +57,13 @@ const handleShare = (url: string) => {
             <path
               d="M8,24 C4,16 12,8 16,8 C20,8 28,16 24,24 C20,32 12,24 16,20 C18,18 22,14 20,10"
               fill="none"
-              stroke="url(#navRibbon)"
+              stroke={`url(#${gradientId})`}
               strokeWidth="3.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg></Link>
-          <button onClick={() => handleShare(!isPreview ? window.location.href : 'https://' + window.location.host +`/${user?.username}`)} className='rounded-2xl px-2 py-2 text-white backdrop-blur-lg' style={{backgroundColor: `color-mix(in srgb, ${theme.background}, ${theme.textColor})`}}><Upload size={isPreview ? 13 : 20}/></button>
+          <button onClick={() => handleShare(!isPreview ? window.location.href : 'https://' + window.location.host +`/${user?.username}`)} className='rounded-2xl px-2 py-2 text-white backdrop-blur-lg' style={{backgroundColor: `color-mix(in srgb, ${ customColors?.background || theme.background}, ${ customColors?.textColor || theme.textColor})`}}><Upload size={isPreview ? 13 : 20}/></button>
     </div>
     <div className="flex flex-col justify-center items-center gap-5">
     <div className={`${isPreview ? 'h-20 w-20' : 'h-25 w-25 '} rounded-full ring-2 ring-offset-2`} style={{

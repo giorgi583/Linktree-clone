@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   
   if (!user?.username) redirect("/onboarding/username")
 
-  return ( <div className="flex h-screen bg-[#fafaf9]">
+  return ( <div className="flex h-screen bg-background">
       <DashboardNav
         username={user.username}
         name={user.name}
