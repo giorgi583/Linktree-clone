@@ -4,13 +4,13 @@ import Link from 'next/link'
 
 const page = () => {
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen bg-brand-tertiary'>
          <Link href={'/'} className='flex items-center gap-2 m-5 mx-5'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 35" width="50" height="50" aria-hidden="true">
               <defs>
                 <linearGradient id="ribbonGrad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
                   <stop offset="0%" stopColor="#115e59" />
-                  <stop offset="100%" stopColor="#701a75" />
+                  <stop offset="100%" stopColor="#86198F" />
                 </linearGradient>
               </defs>
               <path d="M8,24 C4,16 12,8 16,8 C20,8 28,16 24,24 C20,32 12,24 16,20 C18,18 22,14 20,10"
@@ -20,8 +20,8 @@ const page = () => {
             strokeLinecap="round"
             strokeLinejoin="round" />
             </svg>
-            <h1 className="text-4xl font-bold text-teal-800  ">
-            Link<span className="text-fuchsia-900">tree</span></h1>
+            <h1 className="text-4xl font-bold text-teal-800">
+            Link<span className="text-fuchsia-800">tree</span></h1>
         </Link>
         <div className="flex flex-col gap-4 max-w-100 border-2 border-fuchsia-800 bg-gray-50 rounded-xl p-5 mx-auto my-auto">
             <div className="flex items-center gap-2">

@@ -93,7 +93,7 @@
 }
 .dark {
   --brand: oklch(66.423% 0.30399 321.354);
-  --brand-secondary: oklch(67.72% 0.16288 156.465);
+  --brand-secondary: oklch(59.728% 0.10825 180.203);
   --brand-tertiary: oklch(85.691% 0.18399 107.344);
   --background: oklch(17.764% 0.00002 271.152);
   --foreground: oklch(0.985 0 0);
@@ -133,6 +133,7 @@ button {
 input {
   border: 2px solid gray;
   border-radius: 5px;
+  outline: none;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
@@ -167,6 +168,15 @@ select::-webkit-keygen-selector {
   display: none;
 }
 select:focus {
+  border: 2px solid var(--color-brand-secondary);
+}
+textarea {
+  border: 2px solid gray;
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+}
+textarea:focus {
   border: 2px solid var(--color-brand-secondary);
 }
 .glow-box::before {

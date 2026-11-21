@@ -30,6 +30,8 @@ const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/, "Must be a valid hex colo
 export const profileSchema = z.object({
   bio: z.string().max(160).optional(),
   theme: z.enum(["default", "night", "ocean", "pastel", "forest", "sunset", "mono", "bee", "custom"]).default("default"),
+  email: z.string().email().optional(),
+  name: z.string().min(3).max(30).optional(),
   customColors: z
     .object({
       background: hexColor,

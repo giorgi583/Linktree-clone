@@ -134,3 +134,35 @@ redirect("/onboarding/username")
   return { success: true }
   
 }
+
+export async function updateProfile(prevState: any, formData: FormData) {
+  const session = await auth()
+  if (!session?.user?.id) {
+    return { error: "Not signed in" }
+  }
+  const parsed = profileSchema.safeParse({
+    bio: formData.get("bio"),
+    avatarUrl: formData.get("avatarUrl"),
+    name: formData.get("name"),
+    email: formData.get("email"),
+  })
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0].message }
+  }
+  const existingUser = await prisma.user.findUnique({
+    where: { email: parsed.data.email },
+  })
+  if (!existingUser) {
+    return { error: "User not found" }
+  }
+  else if (existingUser.id !== session.user.id) {
+    return { error: "Email already in use" }
+  }
+  else {
+    await prisma.user.update({
+      where: { id: session.user.id },
+      data: { bio: parsed.data.bio, avatarUrl: parsed.data.avatarUrl, name: parsed.data.name, email: parsed.data.email },
+    })
+    return { success: true }
+  }
+}

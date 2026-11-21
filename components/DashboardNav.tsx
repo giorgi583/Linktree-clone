@@ -31,7 +31,7 @@ export function DashboardNav({
 
   return (
     <>
-    <aside className="flex w-16 flex-col justify-between border-r border-[#e7e5e4] py-6 md:w-56 max-sm:hidden">
+    <aside className="flex w-16 flex-col justify-between border-r border-border py-6 md:w-56 max-sm:hidden">
       <div>
         <Link href="/dashboard" className="flex items-center gap-2 px-4 pb-8">
           <svg viewBox="0 0 25 35" width="28" height="28" aria-hidden="true">
@@ -65,7 +65,7 @@ export function DashboardNav({
                 className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors ${
                   isActive
                     ? "bg-[#115e59]/20 text-brand-secondary font-medium"
-                    : "text-sidebar-accent-foreground hover:bg-accent"
+                    : "text-sidebar-accent-foreground hover:bg-border"
                 }`}
               >
                 <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
@@ -77,7 +77,7 @@ export function DashboardNav({
       </div>
 
       <div className="px-2">
-        {(!bio || !avatarUrl) && <div className="mb-3 flex flex-col gap-2  rounded-md border border-[#e7e5e4] bg-[#fefefe] px-3 py-2 text-sm text-stone-500">
+        {(!bio || !avatarUrl) && <div className="mb-3 flex flex-col gap-2  rounded-md border border-border bg-muted px-3 py-2 text-sm text-foreground-secondary">
           <p className="text-sm text-stone-500">Complete your profile to get started.</p>
           <Link  href="/onboarding" className="font-semibold text-brand-secondary rounded-full p-3 bg-brand-tertiary">Complete profile</Link>
           </div>}
@@ -85,13 +85,13 @@ export function DashboardNav({
           href={`/${username}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-3 hidden rounded-md border border-[#e7e5e4] px-3 py-2 text-xs text-stone-500 hover:border-[#115e59]/40 hover:text-[#115e59] md:block"
+          className="mb-3 hidden rounded-md border border-border px-3 py-2 text-xs text-stone-500 hover:border-[#115e59]/40 hover:text-[#115e59] md:block"
         >
           View your page ↗
         </a>
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
-          className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-stone-500 hover:bg-stone-100"
+          className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-stone-500 hover:bg-chart-1/20"
         >
           {avatarUrl ? (
             <Image src={avatarUrl} alt={name ?? username} width={24} height={24} className="rounded-full w-6 h-6" />

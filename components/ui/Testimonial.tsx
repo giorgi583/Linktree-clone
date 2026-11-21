@@ -1,7 +1,7 @@
 export default function Testimonial() {
     return (
         <div id="testimonial" className="flex flex-col items-center text-center">
-            <h1 className="text-4xl font-bold max-w-[740px] mb-[72px]">Trusted by <span className="text-blue-600">30k+</span> world class companies & design teams</h1>
+            <h1 className="text-4xl font-bold max-w-[740px] mb-[72px] text-black">Trusted by <span className="text-blue-600">30k+</span> world class companies & design teams</h1>
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <div className="flex flex-col items-center bg-white px-3 py-8 rounded-lg border border-gray-300/80 max-w-[272px] text-sm text-center text-gray-500">
                     <div className="relative mb-4">

@@ -2,7 +2,7 @@ export default function Pricing() {
     return (
         <section id="pricing"  className="py-20 flex flex-col gap-10">
             <div className="flex flex-col items-center gap-4">
-                <h2 className="text-3xl font-semibold text-center">Pricing</h2>
+                <h2 className="text-3xl font-semibold text-center text-black">Pricing</h2>
                 <p className="text-gray-500 text-center">Choose a plan that's right for you, your team, and your budget</p>
             </div>
         <div className="flex flex-wrap items-center justify-center gap-6">
@@ -47,7 +47,7 @@ export default function Pricing() {
             </div>
         
             <div className="w-72 bg-brand-secondary relative text-center text-white border border-gray-500/30 p-6 pb-14 rounded-lg">
-                <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-[#8789FB] rounded-full">Most Popular</p>
+                <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-[#8802c2] rounded-full">Most Popular</p>
                 <p className="font-semibold pt-2">Pro</p>
                 <h1 className="text-3xl font-semibold">$79<span className="text-sm font-normal">/month</span></h1>
                 <ul className="list-none text-white text-sm mt-6 space-y-1">

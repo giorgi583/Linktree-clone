@@ -22,9 +22,9 @@ const DashboardHeader = ({ username, name }: { username: string | null | undefin
         }
       };
   return (
-    <div className="flex justify-between items-center mb-4 border-b border-[#e7e5e4] pb-4">
+    <div className="flex justify-between items-center mb-4 border-b border-border pb-4">
         <h2 className="text-2xl font-semibold">Welcome, {name}!</h2>
-        <div onClick={handleshare} className="flex items-center gap-3 rounded-full border border-[#e7e5e4] px-3 py-2 text-xs text-stone-500 hover:border-[#115e59]/40 hover:text-[#115e59]"> 
+        <div onClick={handleshare} className="flex items-center gap-3 rounded-full border border-border px-3 py-2 text-xs text-stone-500 hover:border-[#115e59]/40 hover:text-brand-secondary"> 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" aria-hidden="true">
               <defs>
                 <linearGradient id="ribbonGrad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">

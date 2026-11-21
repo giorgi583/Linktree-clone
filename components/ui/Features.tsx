@@ -128,7 +128,7 @@ console.log('in view', inView, "rect.bottom:", rect.bottom, "rect.top:", rect.to
                 }
             `}</style>
             <section id="features" className="flex flex-col items-center justify-center w-full max-w-[1120px] overflow-hidden mx-auto min-h-[70vh] px-10">
-            <h1 className="text-3xl font-semibold text-center mx-auto">Powerful Features</h1>
+            <h1 className="text-3xl font-semibold text-center mx-auto text-black">Powerful Features</h1>
             <p className="text-sm text-slate-500 text-center mt-2 max-w-md mx-auto">Everything you need to manage, track, and grow your finances, securely and efficiently.</p>
             
             <div  ref={sectionRef} className={`flex items-center justify-start gap-6 px-4 md:px-0 transition-all w-max duration-250 mx-auto my-20`}  style={{
