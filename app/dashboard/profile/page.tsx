@@ -18,7 +18,7 @@ const page = async () => {
   return (
     <div>
       <h2 className='text-2xl font-bold p-5 border-b-2 mb-10'>Profile</h2>
-    <div className='bg-sidebar-accent p-10 rounded-2xl'>
+    <div className='bg-sidebar-accent p-10 rounded-2xl shadow'>
       <PersonalInfoForm user={user} />
     </div>
     </div>

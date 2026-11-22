@@ -6,6 +6,8 @@ import { AuthError } from "next-auth"
 import { prisma } from "@/lib/db"
 import {signupSchema, usernameSchema, loginSchema, profileSchema} from "@/lib/schemas"
 import { auth } from "@/auth"
+import { Prisma } from "@/lib/generated/prisma/browser"
+import { revalidatePath } from "next/cache"
 
 export async function hashPassword(password: string) {
     const salt = await bcrypt.genSalt(10)
@@ -128,7 +130,12 @@ export async function setProfile(prevState: any, formData: FormData) {
 
   await prisma.user.update({
     where: { id: session.user.id },
-    data: { bio: parsed.data.bio, avatarUrl: parsed.data.avatarUrl, customColors: parsed.data.theme === "custom" ? parsed.data.customColors : undefined, theme: parsed.data.theme },
+    data: { bio: parsed.data.bio, avatarUrl: parsed.data.avatarUrl, customColors: parsed.data.theme === "custom"
+      ? parsed.data.customColors === null
+        ? Prisma.DbNull
+        : parsed.data.customColors
+      : Prisma.DbNull,
+  theme: parsed.data.theme },
   })
 redirect("/onboarding/username")
   return { success: true }
@@ -141,28 +148,29 @@ export async function updateProfile(prevState: any, formData: FormData) {
     return { error: "Not signed in" }
   }
   const parsed = profileSchema.safeParse({
-    bio: formData.get("bio"),
-    avatarUrl: formData.get("avatarUrl"),
-    name: formData.get("name"),
-    email: formData.get("email"),
+    bio: formData.get("bio") || undefined,
+    avatarUrl: formData.get("avatarUrl") || undefined,
+    name: formData.get("name") || undefined,
+    email: formData.get("email") || undefined,
   })
   if (!parsed.success) {
+    console.log("error:", parsed.error.issues[0].message)
     return { error: parsed.error.issues[0].message }
   }
+  if (parsed.data.email) {
   const existingUser = await prisma.user.findUnique({
     where: { email: parsed.data.email },
-  })
-  if (!existingUser) {
-    return { error: "User not found" }
+  });
+
+  if (existingUser && existingUser.id !== session.user.id) {
+    return { error: "Email already in use" };
   }
-  else if (existingUser.id !== session.user.id) {
-    return { error: "Email already in use" }
-  }
-  else {
+}
     await prisma.user.update({
       where: { id: session.user.id },
       data: { bio: parsed.data.bio, avatarUrl: parsed.data.avatarUrl, name: parsed.data.name, email: parsed.data.email },
     })
-    return { success: true }
+    revalidatePath("/dashboard/profile")
+    return { success: true 
   }
 }
